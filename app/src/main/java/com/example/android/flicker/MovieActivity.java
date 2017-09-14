@@ -68,6 +68,18 @@ public class MovieActivity extends AppCompatActivity {
 
             @Override
             public void detailTextViewOnClick(View v, int position, Movies movie) {
+                Intent intent = null;
+                if(v.getId() == R.id.detailText){
+                    intent = new Intent(MovieActivity.this,MovieDetailsActivity.class);
+                    intent.putExtra("originaltitle",movie.getOriginalTitle());
+                    intent.putExtra("voteaverage",movie.getVoteAverage());
+                    intent.putExtra("releasedate",movie.getReleaseDate());
+                    intent.putExtra("overview",movie.getOverview());
+                    intent.putExtra("videoIDS", movie.getVidoeIDS());
+                    if(intent.resolveActivity(getPackageManager()) != null){
+                        startActivity(intent);
+                    }
+                }
 
             }
 
